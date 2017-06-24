@@ -163,10 +163,10 @@
     takeItem(item){
       if(this._pack.length < 3)
         {this._pack.push(item);
-      console.log( this.name + " " + this._pack);
+      console.log( this.name , item);
         return true;
         } else {
-      console.log( "Pack is full. Item could not be stored");
+      console.log( "Pack is full. " + item + " could not be stored");
       return false;
     }
   }
@@ -203,7 +203,7 @@
 
   if(index !== -1){
     this._pack.splice(index, 1);
-    console.log(this.name +" " + item + " has been discarded");
+    console.log(this.name + item + " has been discarded");
     return true;
   } else {
     console.log(item + " was not discarded since the item could not be found.");
