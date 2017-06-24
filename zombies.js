@@ -113,7 +113,7 @@
     this.equipped = false;
    }
 
- }
+
 
 /**
  * Player Class Method => checkPack()
@@ -126,6 +126,13 @@
  *
  * @name checkPack
  */
+
+  //access modifier method
+
+
+  getPack(){
+    return this._pack;
+  }
 
 
 /**
@@ -243,7 +250,7 @@
  * @return {string/boolean}   Weapon name or false if nothing is equipped.
  */
 
-
+}
 /**
  * Class => Zombie(health, strength, speed)
  * -----------------------------
