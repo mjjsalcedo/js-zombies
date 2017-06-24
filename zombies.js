@@ -137,7 +137,13 @@
 
 
   checkPack(){
-    console.log(this.getPack());
+    var stuff = this.getPack();
+    var stuffName = [];
+      for (var i = 0; i < stuff.length; i++) {
+        stuffName.push(stuff[i].name);
+    }
+
+    console.log("Check Pack:" , this.name + " has a " + stuffName.join(', '));
   }
 
 
@@ -163,10 +169,10 @@
     takeItem(item){
       if(this._pack.length < 3)
         {this._pack.push(item);
-      console.log( this.name , item);
+      console.log( this.name + " acquired a " + item.name);
         return true;
         } else {
-      console.log( "Pack is full. " + item + " could not be stored");
+      console.log( "Pack is full. " + item.name + " could not be stored");
       return false;
     }
   }
@@ -203,10 +209,10 @@
 
   if(index !== -1){
     this._pack.splice(index, 1);
-    console.log(this.name + item + " has been discarded");
+    console.log(this.name + "'s " + item.name + " has been discarded");
     return true;
   } else {
-    console.log(item + " was not discarded since the item could not be found.");
+    console.log(this.name + "'s " + item.name + " was not discarded since the item could not be found.");
     return false;
   }
  }
@@ -238,11 +244,13 @@
   if(inPack !== -1 && itemToEquip instanceof Weapon === true){
     if(this.equipped !== false){
       this._pack.push(this.equipped);
+      console.log(this.name + " swapped " + this.equipped.name + " with " +itemToEquip.name);
       this.equipped = itemToEquip;
       this._pack.splice(inPack, 1);
     } else {
       this.equipped = itemToEquip;
       this._pack.splice(inPack, 1);
+      console.log(this.name + " equipped a " + itemToEquip.name);
     }
 
   } else return;
@@ -279,6 +287,8 @@
       } else {
        this.health = this._maxHealth;
       }
+
+      console.log(this.name + " ate a " + itemToEat.name);
     }
   }
 
@@ -322,8 +332,8 @@
  equippedWith(){
 
   if (this.equipped === false){
-      console.log("nothing here..."); return false;
-  } else { console.log(this.name , this.equipped.name); return this.equipped.name;
+      console.log("Check equipped: " + this.name + " has nothing equipped"); return false;
+  } else { console.log(this.name + " is holding a " + this.equipped.name); return this.equipped.name;
  }
 }
 }
